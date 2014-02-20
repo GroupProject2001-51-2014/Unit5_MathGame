@@ -126,5 +126,10 @@ public abstract class Operator<T extends Double, U extends String> implements IO
     public abstract boolean isCorrect(T input); 
 
     @Override
-    public abstract U response(boolean isCorrect);  
+    public abstract U response(boolean isCorrect);
+    
+    @Override
+    public void playResponse(boolean isCorrect){
+        // Brian: Use this method to provide sound feedback
+    }
 }
