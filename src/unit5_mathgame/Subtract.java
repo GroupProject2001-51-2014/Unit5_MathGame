@@ -7,7 +7,7 @@ package unit5_mathgame;
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
- *
+ * 
 
  * @author Alhassan Ahmed
  * @param <T>
@@ -20,11 +20,7 @@ public class Subtract<T extends Double, U extends String> extends Operator<T, U>
     private int num2;
     private int result;
 
-    public Subtract(){
-        num1 = 0;
-        num2 = 0;
-        result = 0;
-    }
+    public Subtract(){}
     
 //create a constructors
     public Subtract( int number1, int number2, int resul){
