@@ -9,7 +9,7 @@ package unit5_mathgame;
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
- *
+ * Brian Bagwell       02/19/2014      Modified the switch value to take the enum    
  * 
  * @author John Mambo <john.mambo@gmail.com>
  */
@@ -17,11 +17,11 @@ public final class OperatorFactory {
     
     public IOperation CreateOperator(IOperation.Operation operation){
         
-        switch(operation.name()){
-            case "ADD":         return new Add();
-            case "SUBTRACT":    return new Subtract();
-            case "MULTIPLY":    return new Multiply();
-            case "DIVIDE":      return new Divide();
+        switch(operation){
+            case ADD:         return new Add();
+            case SUBTRACT:    return new Subtract();
+            case MULTIPLY:    return new Multiply();
+            case DIVIDE:      return new Divide();
             default: return null;
         }
     }
