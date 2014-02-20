@@ -1,6 +1,9 @@
 
 package unit5_mathgame;
 
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * 
  * <p/>
@@ -9,11 +12,14 @@ package unit5_mathgame;
  * ------------------  -------------   ---------<br/>
  *
  * @author Brian Bagwell
- * @param <T>
- * @param <U>
+ * @param <T> Template type parameter with {@code Double} upper bound 
+ * @param <U> Template type parameter with {@code String} upper bound 
  */
 public class Divide<T extends Double, U extends String> extends Operator<T, U> {
 
+    
+    public Divide (){}
+    
     @Override
     public void result() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
