@@ -1,6 +1,8 @@
 
 package unit5_mathgame;
 
+import javax.swing.JFrame;
+
 /**
  * 
  * <p/> 
@@ -17,7 +19,8 @@ public class MathGameGUI extends javax.swing.JFrame {
      * Creates new form MathGameGUI
      */
     public MathGameGUI() {
-        initComponents();
+        this.initComponents();
+        this.init();
     }
 
     /**
@@ -29,21 +32,66 @@ public class MathGameGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jP_Main = new javax.swing.JPanel();
+        jMB_Main = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMI_Close = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jP_MainLayout = new javax.swing.GroupLayout(jP_Main);
+        jP_Main.setLayout(jP_MainLayout);
+        jP_MainLayout.setHorizontalGroup(
+            jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jP_MainLayout.setVerticalGroup(
+            jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 279, Short.MAX_VALUE)
+        );
+
+        jMenu1.setText("File");
+
+        jMI_Close.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        jMI_Close.setText("Close");
+        jMI_Close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMI_CloseActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMI_Close);
+
+        jMB_Main.add(jMenu1);
+        jMB_Main.add(jMenu2);
+
+        setJMenuBar(jMB_Main);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jP_Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jP_Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    /**
+     * Event handler for Menu item "Close" under "File" 
+     * @param evt Event from the jMenuItem jMI_Close
+     */
+    private void jMI_CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMI_CloseActionPerformed
+        this.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_jMI_CloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -61,25 +109,36 @@ public class MathGameGUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MathGameGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MathGameGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MathGameGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MathGameGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MathGameGUI().setVisible(true);
-            }
-        });
+        //java.awt.EventQueue.invokeLater(new Runnable() {
+        //    public void run() {
+        //        new MathGameGUI().setVisible(true);
+        //    }
+        //});
     }
-
+    
+    /**
+     * Initialize some properties of the JFrame Component and make it visible
+     */
+    private void init() {
+        this.setTitle("Math Game");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(800, 600);           // Size the JFrame to a known size configuration
+        this.setLocationRelativeTo(null); // Brings the window to the Center of the screen
+        this.setVisible(true);            // Vital allow visibility of the JFrame NB: JFrame.show() is deprecated  
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMB_Main;
+    private javax.swing.JMenuItem jMI_Close;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jP_Main;
     // End of variables declaration//GEN-END:variables
 }
