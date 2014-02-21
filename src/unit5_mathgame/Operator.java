@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @param <U>
  */
 public abstract class Operator<T extends Double, U extends String> implements IOperation<T,U> {
-    private static final Object lock = new Object();
+    private static final Object LOCK = new Object();
     public final ConcurrentHashMap<DefineValue, T> valuePair = new ConcurrentHashMap<>(1,1f,1);
     
     /**
@@ -30,7 +30,7 @@ public abstract class Operator<T extends Double, U extends String> implements IO
      *                                  or if {@code DefineValue.LOWERLIMIT} is greater than the {@code DefineValue.UPPERLIMIT} is {@code null}<br/>
      */
     public final ConcurrentHashMap<DefineValue, T> generateValuePair(ConcurrentHashMap<DefineValue, T> valuePair) {
-        synchronized(lock){
+        synchronized(LOCK){
             if (valuePair.get(DefineValue.UPPERLIMIT) == null 
                 || valuePair.get(DefineValue.LOWERLIMIT) == null) {
                 throw new IllegalArgumentException("Upper Limit or Lower Limit as defined in the parameter is null");
@@ -59,7 +59,7 @@ public abstract class Operator<T extends Double, U extends String> implements IO
     
     
     public ConcurrentHashMap<DefineValue, T> range(ConcurrentHashMap<DefineValue, T> valuePairInput, Level level, Operation operation) {
-        synchronized(lock){
+        synchronized(LOCK){
             ConcurrentHashMap<DefineValue, Double> _valuePair = new ConcurrentHashMap<>(1, 3.0f, 3);
             double _multiplier = Math.pow(10, operation.index()) * Math.pow(10, level.index() - 1);
             switch(operation){
