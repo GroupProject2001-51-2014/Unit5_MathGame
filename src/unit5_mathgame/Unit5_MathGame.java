@@ -111,5 +111,20 @@ public class Unit5_MathGame {
         else {
             
         }
+    
+        /**
+         * Running the GUI
+         */
+        MathGameGUI ui = null;
+        try{
+            ui = new MathGameGUI();
+        }
+        catch(Exception ex){
+            if(ui == null){
+            } else {
+                ui.dispose();
+            }
+        }
+    
     }  
 }
