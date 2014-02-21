@@ -5,7 +5,8 @@ import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 /** 
- *
+ * Provided a means to calculate the results of two randomly generated numbers
+ * with a method to check the answer as well as provide the appropriate response.
  * <p/>
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
@@ -18,26 +19,42 @@ import java.util.concurrent.ConcurrentHashMap;
  * 
  */
 public class Add<T extends Double, U extends String> extends Operator<T, U> {
-    private static final Object lock = new Object();
+    private static final Object LOCK = new Object();    // Constant to be used to sync
       
-    public Add() {}
+    public Add() {} // default constractor
     
-    public Add(ConcurrentHashMap<DefineValue, T> valuePairInput){
+    /**
+     * Constructor that takes the {@code ConcurrentHashMap<DefineValue, T> valuePairInput}
+     * and sets the math game variables accordingly
+     * 
+     * @param valuePairInput Keeps track of the variables that drive the math game 
+     */
+    private Add(ConcurrentHashMap<DefineValue, T> valuePairInput){
         if (valuePairInput == null || valuePairInput.isEmpty()) { 
             throw new IllegalArgumentException("Parameter is null or not initialized");
         }
         this.setConcurrentHashMap(valuePairInput); //setConcurrentHashMap(valuePairInput);
     }
 
-
+    /**
+     * Determines the results of the Addition of <b> FIRSTVALUE </b> and <b> SECONDVALUE </b>
+     */
     @Override
     public final void result(){
         ConcurrentHashMap<DefineValue, T> _result = this.result(this.valuePair);
         this.setConcurrentHashMap(_result);
     }
     
-    public final ConcurrentHashMap<DefineValue, T> result(ConcurrentHashMap<DefineValue, T> valuePairInput) {
-        synchronized(lock){
+    /**
+     * Calculates the result of adding two variables contained in the parameter {@code ConcurrentHashMap<DefineValue, T>} <b>valuePairInput</b><br/> 
+     * Those variables are <b>FIRSTVALUE</b> and <b>SECONDVALUE</b>
+     * 
+     * @param valuePairInput {@code ConcurrentHashMap<DefineValue, T>} All the variables required to run the Math Game
+     * @return {@code ConcurrentHashMap<DefineValue, T>} which contains the data structure for the 
+     *          Math Game variables.
+     */
+    private ConcurrentHashMap<DefineValue, T> result(ConcurrentHashMap<DefineValue, T> valuePairInput) {
+        synchronized(LOCK){
             Double _result;
             if (valuePairInput == null || valuePairInput.isEmpty()) {
                 throw new IllegalArgumentException("Parameter is null or not initialized");
@@ -61,12 +78,15 @@ public class Add<T extends Double, U extends String> extends Operator<T, U> {
             _result = valuePairInput.get(DefineValue.FIRSTVALUE) + valuePairInput.get(DefineValue.SECONDVALUE);
             valuePairInput.put(DefineValue.ANSWER, (T)_result);
             
-            //this.setConcurrentHashMap(valuePairInput);
-            
             return valuePairInput;
         }
     }
 
+    /**
+     * Checks if the {@code input} parameter value provide matches the expected {@code DefineValue.ANSWER}
+     * @param input The user input of their answer to the question presented.
+     * @return {@code boolean} - If the user has provided the correct answer then {@code true} else {@code false}
+     */
     @Override
     public boolean isCorrect(T input) {
         boolean _isCorrect = false;
@@ -80,10 +100,16 @@ public class Add<T extends Double, U extends String> extends Operator<T, U> {
         return _isCorrect;
     }
 
+    /**
+     * Provides an appropriate response to keep the user engaged.
+     * @param isCorrect Is the user input correct?
+     * @return type of <b>U</> class which contains the response message. 
+     *         The upper bound of <b>U</> is of type {@code String}
+     */
     @Override
     public U response(boolean isCorrect) {
         Random _randNumGen = new Random();
-        synchronized(lock){
+        synchronized(LOCK){
             int _num = _randNumGen.nextInt(5);
             if (isCorrect) {
                switch(_num){
@@ -108,6 +134,10 @@ public class Add<T extends Double, U extends String> extends Operator<T, U> {
         }//end Sync block
     }//end response
     
+    /**
+     * Sets the global variable from the parameter
+     * @param inputConcurrentHashMap {@code ConcurrentHashMap<DefineValue, T>} Are the Math Game parameters
+     */
     private void setConcurrentHashMap(ConcurrentHashMap<DefineValue, T> inputConcurrentHashMap){
         if (inputConcurrentHashMap == null || inputConcurrentHashMap.isEmpty()) {
             throw new IllegalArgumentException("Parameter is null or not initialized");
