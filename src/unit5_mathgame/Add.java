@@ -1,7 +1,6 @@
 
 package unit5_mathgame;
 
-import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 /** 
@@ -11,7 +10,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
- * 
+ * John Mambo          02/23/2014      Removed all other method implementation except public void result()<br/>
+ *                                     They are abstracted to the abstract Operator class.
  * 
  * @author John Mambo <john.mambo@gmail.com>
  * @param <T> Template type parameter with {@code Double} upper bound 
@@ -81,58 +81,6 @@ public class Add<T extends Double, U extends String> extends Operator<T, U> {
             return valuePairInput;
         }
     }
-
-    /**
-     * Checks if the {@code input} parameter value provide matches the expected {@code DefineValue.ANSWER}
-     * @param input The user input of their answer to the question presented.
-     * @return {@code boolean} - If the user has provided the correct answer then {@code true} else {@code false}
-     */
-    @Override
-    public boolean isCorrect(T input) {
-        boolean _isCorrect = false;
-        try{
-            _isCorrect = (this.valuePair.get(DefineValue.ANSWER).toString() == null ? T.valueOf(input).toString() == null : this.valuePair.get(DefineValue.ANSWER).toString().equals(T.valueOf(input).toString()));
-        }
-        catch(Exception ex){
-            // for debuging - normally would handle the error here.
-            System.out.printf("Error occured while creating 'Add': %s%n", ex);
-        }
-        return _isCorrect;
-    }
-
-    /**
-     * Provides an appropriate response to keep the user engaged.
-     * @param isCorrect Is the user input correct?
-     * @return type of <b>U</> class which contains the response message. 
-     *         The upper bound of <b>U</> is of type {@code String}
-     */
-    @Override
-    public U response(boolean isCorrect) {
-        Random _randNumGen = new Random();
-        synchronized(LOCK){
-            int _num = _randNumGen.nextInt(5);
-            if (isCorrect) {
-               switch(_num){
-                    case 0: return (U)"Very good!";
-                    case 1: return (U)"Excellent!";
-                    case 2: return (U)"Nice work!";
-                    case 3: return (U)"Keep up the good work!";
-                    case 4: return (U)"Hoorah!";
-                    default: return null; 
-                } 
-            }
-            else{
-                switch(_num){
-                    case 0: return (U)"No. Please try again!";
-                    case 1: return (U)"Wrong. Try once more!";
-                    case 2: return (U)"Don't give up!";
-                    case 3: return (U)"No. Keep trying!";
-                    case 4: return (U)"Dig in a little deeper. It will pay-off!";
-                    default: return null; 
-                }                
-            } 
-        }//end Sync block
-    }//end response
     
     /**
      * Sets the global variable from the parameter
