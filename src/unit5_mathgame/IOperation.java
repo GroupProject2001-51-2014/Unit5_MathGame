@@ -48,8 +48,7 @@ public interface IOperation<T extends Double, U extends String> {
         ADD(1),
         SUBTRACT(2),
         MULTIPLY(3),
-        DIVIDE(4),
-        RANDOM(5);
+        DIVIDE(4);
         
         private final int val;
         
