@@ -23,10 +23,12 @@ public class Divide<T extends Double, U extends String> extends Operator<T, U>{
     @Override
     public void generateValuePair() throws UnsupportedOperationException{
         throw new UnsupportedOperationException("Not supported yet.");
+        // TODO Brian Bagwell: completed the logic here and delete line 25 above^
     }//end generateValuePair()
     
     @Override
     public void result()  throws UnsupportedOperationException{
         throw new UnsupportedOperationException("Not supported yet.");
+        // TODO Brian Bagwell: completed the logic here and delete line 31 above^
     }//end result() 
 }

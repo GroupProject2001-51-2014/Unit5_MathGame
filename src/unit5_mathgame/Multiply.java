@@ -21,6 +21,7 @@ public class Multiply<T extends Double, U extends String> extends Operator<T, U>
     
     @Override
     public void result() throws UnsupportedOperationException{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
+        // TODO Brian Bagwell: completed the logic here and delete line 24 above^
     }//end result()
 }

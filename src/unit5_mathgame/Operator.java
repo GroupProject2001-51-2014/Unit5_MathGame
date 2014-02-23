@@ -175,6 +175,7 @@ public abstract class Operator<T extends Double, U extends String> implements IO
     
     @Override
     public void playResponse(boolean isCorrect) throws UnsupportedOperationException{
-        // Brian: Use this method to provide sound feedback
+        throw new UnsupportedOperationException("Not supported yet.");
+        // TODO Brian Bagwell: Use this method to provide sound feedback and remove line 178 above^
     }
 }
