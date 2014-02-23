@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
- * John Mambo          02/23/2014      Removed all other method implementation except public void result()<br/>
+ * John Mambo          02/23/2014      Removed all other method implementation except public void {@code result()}<br/>
  *                                     They are abstracted to the abstract Operator class.
  * 
  * @author John Mambo <john.mambo@gmail.com>
