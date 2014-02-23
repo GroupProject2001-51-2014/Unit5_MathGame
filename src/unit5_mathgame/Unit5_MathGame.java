@@ -82,7 +82,7 @@ public class Unit5_MathGame {
         /**
          * DEBUG ONLY
          */    
-        final boolean DEBUG = true;
+        final boolean DEBUG = false;
     
         if (DEBUG) {
             IOperation.Operation operation= IOperation.Operation.ADD;   //indicate the desired Math operation.
