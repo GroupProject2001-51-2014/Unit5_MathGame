@@ -7,74 +7,46 @@ package unit5_mathgame;
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
- * 
+ * John Mambo           02/23/2014      Took over the implementation of the class Subtract from Alhassan Ahmed
 
- * @author Alhassan Ahmed
+ * @author John Mambo
  * @param <T>
  * @param <U> 
  * 
  */
 public class Subtract<T extends Double, U extends String> extends Operator<T, U> {
-
-    private int num1;
-    private int num2;
-    private int result;
-
-    public Subtract(){}
     
-//create a constructors
-    public Subtract( int number1, int number2, int resul){
-            number1 = num1;
-            number2 = num2;
-            resul = result;
-     }
-    
-             //Mutator method   
-    public void setFirstNumber(int number1) 
-     { 
-         this.num1 = number1 ; 
-     }
-    
-    public void setsecondNumber(int number2) 
-    { 
-      this.num2 = number2; 
-    }
-    
-      
-    // Accessor methods 
-
-    public int getfirstNumber() 
-    { 
-    return num1; 
-    } 
-
-    public int getsecondNumber() 
-    {  return num2; 
-    } 
-    public int getSubtraction(){
-    result = num1 - num2;
-
-    return result;
-    }
- 
+    /**
+     * Calculates the result of Subtracting two variables contained in the parameter {@code ConcurrentHashMap<DefineValue, T>} <b>valuePairInput</b><br/> 
+     * Those variables are <b>FIRSTVALUE</b> and <b>SECONDVALUE</b>
+     *
+     * @throws UnsupportedOperationException 
+     */
         @Override
-    public void result() throws UnsupportedOperationException{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public final void result() throws UnsupportedOperationException{
+        Double _result;
+        
+        if (this.valuePair == null || this.valuePair.isEmpty()) {
+            throw new IllegalArgumentException("Parameter is null or not initialized");
+        }
+        if (this.valuePair.get(DefineValue.UPPERLIMIT) == null 
+            || this.valuePair.get(DefineValue.LOWERLIMIT) == null 
+            || this.valuePair.get(DefineValue.FIRSTVALUE) == null 
+            || this.valuePair.get(DefineValue.SECONDVALUE) == null) {
+            throw new IllegalArgumentException("One of the values in the parameter is null");
+        }
+        if (this.valuePair.get(DefineValue.LOWERLIMIT) > this.valuePair.get(DefineValue.UPPERLIMIT)) {
+            throw new IllegalArgumentException("Lower Limit cannot be greater than the Upper Limit of the range.");
+        }
+        if (this.valuePair.get(DefineValue.FIRSTVALUE) < this.valuePair.get(DefineValue.LOWERLIMIT) || this.valuePair.get(DefineValue.FIRSTVALUE) > this.valuePair.get(DefineValue.UPPERLIMIT)) {
+            throw new IllegalArgumentException("First Value is out of Range.");
+        }
+        if (this.valuePair.get(DefineValue.SECONDVALUE) < this.valuePair.get(DefineValue.LOWERLIMIT) || this.valuePair.get(DefineValue.SECONDVALUE) > this.valuePair.get(DefineValue.UPPERLIMIT)) {
+            throw new IllegalArgumentException("second Value is out of Range.");
+        }
+        
+        _result = this.valuePair.get(DefineValue.FIRSTVALUE) - this.valuePair.get(DefineValue.SECONDVALUE);
 
-    @Override
-    public boolean isCorrect(T input) throws UnsupportedOperationException{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public U response(boolean isCorrect) throws UnsupportedOperationException{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void playResponse(boolean isCorrect) throws UnsupportedOperationException{
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-}
+        this.valuePair.put(DefineValue.ANSWER, (T)_result);
+    }//end result()
+}//end class Subtract<T extends Double, U extends String> extends Operator<T, U>
