@@ -456,7 +456,9 @@ public class MathGameGUI extends javax.swing.JFrame {
                         
                         this.jLblResponse.setText(String.format("Not quite! The correct answer is %d", _correctAnswer.intValue()));
                     }
-                }    
+                }
+                
+                myOperation.playResponse(_isCorrect);
             }
             catch(NumberFormatException ex){
                  JOptionPane.showMessageDialog(rootPane, String.format("%s is not a number%nPlease enter a valid numnber%nError: %s", this.jTfAnswer.getText(),ex), "Error: Invalid Number", WIDTH);
