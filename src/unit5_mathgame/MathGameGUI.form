@@ -7,6 +7,10 @@
         <Property name="text" type="java.lang.String" value="jMenuItem1"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="GrpLevel">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="GrpOperation">
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMB_Main">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -55,7 +59,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jP_Main" alignment="0" max="32767" attributes="0"/>
+          <Component id="jP_Main" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -70,15 +74,270 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLblResponse" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLblAnswerTag" min="-2" pref="107" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTfAnswer" min="-2" pref="133" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jBtnSubmit" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jBtnStartNext" min="-2" max="-2" attributes="0"/>
+                      <Component id="jRbRandom" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLblMathOpearation" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbAdd" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbSubtract" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbMultiply" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbDivide" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jRbGenius" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbHard" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbModerate" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbEasy" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLblLevel" min="-2" pref="94" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="279" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLblMathOpearation" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="jLblLevel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jRbAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbEasy" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jRbSubtract" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbModerate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jRbMultiply" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbHard" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jRbDivide" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRbGenius" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jRbRandom" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jBtnStartNext" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                          <Component id="jLblAnswerTag" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTfAnswer" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBtnSubmit" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jLblResponse" min="-2" pref="79" max="-2" attributes="0"/>
+                  <EmptySpace pref="42" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLblMathOpearation">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Mathematical Operation"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLblLevel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Level of Ease"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRbAdd">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="GrpOperation"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Addition"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRbSubtract">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="GrpOperation"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Subtraction"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRbMultiply">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="GrpOperation"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Multiplication"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRbDivide">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="GrpOperation"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Division"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRbRandom">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="GrpOperation"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Random Choice"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRbEasy">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="GrpLevel"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Easy"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRbModerate">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="GrpLevel"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Moderate"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRbHard">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="GrpLevel"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Hard"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRbGenius">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="GrpLevel"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Genius"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jBtnStartNext">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Start"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnStartNextActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTfAnswer">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Enter your answer here"/>
+          </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTfAnswerFocusGained"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTfAnswerKeyReleased"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLblAnswerTag">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="Answer:"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLblQuestion" min="-2" pref="354" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jLbQuestion" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLblQuestion" min="-2" pref="31" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLbQuestion" pref="88" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Please choose the options on the right and click &quot;Start&quot;  button:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLblQuestion">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Question:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLbQuestion">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLblResponse">
+        </Component>
+        <Component class="javax.swing.JButton" name="jBtnSubmit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Submit"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnSubmitActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
     </Container>
   </SubComponents>
 </Form>

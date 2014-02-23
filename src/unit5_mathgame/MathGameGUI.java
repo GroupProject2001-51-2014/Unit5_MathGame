@@ -1,7 +1,17 @@
 
 package unit5_mathgame;
 
+import java.awt.HeadlessException;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 /**
  * 
@@ -14,13 +24,20 @@ import javax.swing.JFrame;
  *
  */
 public class MathGameGUI extends javax.swing.JFrame {
-
+    Map<String, JRadioButton> selectedRadioButton = new HashMap<String, JRadioButton>();
+    IOperation myOperation;
+    int numWrongAns = 0;
+    
     /**
      * Creates new form MathGameGUI
      */
     public MathGameGUI() {
         this.initComponents();
         this.init();
+        this.jLblAnswerTag.setVisible(false);
+        this.jTfAnswer.setVisible(false);
+        this.jBtnSubmit.setVisible(false);
+        
     }
 
     /**
@@ -33,7 +50,29 @@ public class MathGameGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        GrpLevel = new javax.swing.ButtonGroup();
+        GrpOperation = new javax.swing.ButtonGroup();
         jP_Main = new javax.swing.JPanel();
+        jLblMathOpearation = new javax.swing.JLabel();
+        jLblLevel = new javax.swing.JLabel();
+        jRbAdd = new javax.swing.JRadioButton();
+        jRbSubtract = new javax.swing.JRadioButton();
+        jRbMultiply = new javax.swing.JRadioButton();
+        jRbDivide = new javax.swing.JRadioButton();
+        jRbRandom = new javax.swing.JRadioButton();
+        jRbEasy = new javax.swing.JRadioButton();
+        jRbModerate = new javax.swing.JRadioButton();
+        jRbHard = new javax.swing.JRadioButton();
+        jRbGenius = new javax.swing.JRadioButton();
+        jBtnStartNext = new javax.swing.JButton();
+        jTfAnswer = new javax.swing.JTextField();
+        jLblAnswerTag = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLblQuestion = new javax.swing.JLabel();
+        jLbQuestion = new javax.swing.JLabel();
+        jLblResponse = new javax.swing.JLabel();
+        jBtnSubmit = new javax.swing.JButton();
         jMB_Main = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMI_Close = new javax.swing.JMenuItem();
@@ -43,15 +82,169 @@ public class MathGameGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLblMathOpearation.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLblMathOpearation.setText("Mathematical Operation");
+
+        jLblLevel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLblLevel.setText("Level of Ease");
+
+        GrpOperation.add(jRbAdd);
+        jRbAdd.setText("Addition");
+
+        GrpOperation.add(jRbSubtract);
+        jRbSubtract.setText("Subtraction");
+
+        GrpOperation.add(jRbMultiply);
+        jRbMultiply.setText("Multiplication");
+
+        GrpOperation.add(jRbDivide);
+        jRbDivide.setText("Division");
+
+        GrpOperation.add(jRbRandom);
+        jRbRandom.setText("Random Choice");
+
+        GrpLevel.add(jRbEasy);
+        jRbEasy.setText("Easy");
+
+        GrpLevel.add(jRbModerate);
+        jRbModerate.setText("Moderate");
+
+        GrpLevel.add(jRbHard);
+        jRbHard.setText("Hard");
+
+        GrpLevel.add(jRbGenius);
+        jRbGenius.setText("Genius");
+
+        jBtnStartNext.setText("Start");
+        jBtnStartNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnStartNextActionPerformed(evt);
+            }
+        });
+
+        jTfAnswer.setText("Enter your answer here");
+        jTfAnswer.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTfAnswerFocusGained(evt);
+            }
+        });
+        jTfAnswer.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTfAnswerKeyReleased(evt);
+            }
+        });
+
+        jLblAnswerTag.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLblAnswerTag.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLblAnswerTag.setText("Answer:");
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Please choose the options on the right and click \"Start\"  button:");
+
+        jLblQuestion.setText("Question:");
+
+        jLbQuestion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLbQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLbQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+        );
+
+        jBtnSubmit.setText("Submit");
+        jBtnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSubmitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jP_MainLayout = new javax.swing.GroupLayout(jP_Main);
         jP_Main.setLayout(jP_MainLayout);
         jP_MainLayout.setHorizontalGroup(
             jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_MainLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLblResponse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jP_MainLayout.createSequentialGroup()
+                        .addComponent(jLblAnswerTag, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTfAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBtnSubmit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBtnStartNext)
+                    .addComponent(jRbRandom)
+                    .addGroup(jP_MainLayout.createSequentialGroup()
+                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLblMathOpearation)
+                            .addComponent(jRbAdd)
+                            .addComponent(jRbSubtract)
+                            .addComponent(jRbMultiply)
+                            .addComponent(jRbDivide))
+                        .addGap(18, 18, 18)
+                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRbGenius)
+                            .addComponent(jRbHard)
+                            .addComponent(jRbModerate)
+                            .addComponent(jRbEasy)
+                            .addComponent(jLblLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         jP_MainLayout.setVerticalGroup(
             jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(jP_MainLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jP_MainLayout.createSequentialGroup()
+                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLblMathOpearation, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLblLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRbAdd)
+                            .addComponent(jRbEasy))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRbSubtract)
+                            .addComponent(jRbModerate))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRbMultiply)
+                            .addComponent(jRbHard))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRbDivide)
+                            .addComponent(jRbGenius))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRbRandom))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBtnStartNext)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLblAnswerTag)
+                        .addComponent(jTfAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtnSubmit)))
+                .addGap(18, 18, 18)
+                .addComponent(jLblResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jMenu1.setText("File");
@@ -74,7 +267,7 @@ public class MathGameGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jP_Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jP_Main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,6 +285,187 @@ public class MathGameGUI extends javax.swing.JFrame {
         this.setVisible(false);
         this.dispose();
     }//GEN-LAST:event_jMI_CloseActionPerformed
+
+    private void jTfAnswerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTfAnswerKeyReleased
+        //<editor-fold defaultstate="collapsed" desc="REMOVE">
+        /* if( this.jTfAnswer.getText().length() > 0){
+        this.jBtnStartNext.setText("Submit");
+        }
+        else{
+        this.jBtnStartNext.setText("Start");
+        }*/
+//</editor-fold>
+    }//GEN-LAST:event_jTfAnswerKeyReleased
+
+    private void jTfAnswerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTfAnswerFocusGained
+        this.jTfAnswer.setText("");
+    }//GEN-LAST:event_jTfAnswerFocusGained
+
+    private void jBtnStartNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnStartNextActionPerformed
+        Random _randomNumberGenerator = new Random(); 
+        ConcurrentHashMap _mathGameVariables;    
+        
+        JRadioButton _jRbOperation;
+        JRadioButton _jRbLevel;
+
+        IOperation.Operation _operation;    //indicate the desired Math operation.
+        IOperation.Level _level;            //indicate the level of ease        
+        OperatorFactory _factory;
+        
+        String _operatorSymbol = null;
+        
+        try{
+            selectedRadioButton.put("Level", this.jRadioButtonSelected(this.GrpLevel));
+            selectedRadioButton.put("Operation", this.jRadioButtonSelected(this.GrpOperation));
+
+            _jRbLevel = this.selectedRadioButton.get("Level");
+            _jRbOperation = this.selectedRadioButton.get("Operation");
+
+
+            if(_jRbLevel == null || _jRbOperation == null){
+                //String _title = this._jRbLevel == null ? "Select Level of Ease" : "";
+                StringBuilder _title = new StringBuilder();
+                StringBuilder _message = new StringBuilder();
+                _title.append("Error: Select ");
+                if(_jRbLevel == null){
+                    _message.append("Select Level of ease\n");
+                    _title.append("Level");
+                }
+                if(_jRbLevel == null && _jRbOperation == null){
+                    _title.append(" and ");
+                }
+                if(_jRbOperation == null){
+                    _message.append("Select Mathematical Operation\n");
+                    _title.append("Opearation");
+                }
+
+                JOptionPane.showMessageDialog(rootPane, _message.toString(), _title.toString(), WIDTH);
+            }else{
+                /**
+                 * Logic
+                 */
+                switch(_jRbOperation.getText()){
+                    case "Addition": 
+                        _operation = IOperation.Operation.ADD;
+                        break;
+                    case "Subtraction": 
+                        _operation = IOperation.Operation.SUBTRACT;
+                        break;
+                    case "Multiplication": 
+                        _operation = IOperation.Operation.MULTIPLY;
+                        break;
+                    case "Division": 
+                        _operation = IOperation.Operation.DIVIDE;
+                        break;
+                    default:    
+                        _operation = IOperation.Operation.values()[(int) (_randomNumberGenerator.nextDouble() * 3)];
+                        break;
+                }
+
+                switch(_jRbLevel.getText()){
+                    case "Easy": 
+                        _level = IOperation.Level.EASY;
+                        break;
+                    case "Moderate": _level = IOperation.Level.MODERATE;
+                        break;
+                    case "Hard": 
+                        _level = IOperation.Level.HARD;
+                        break;
+                    case "Genius": 
+                        _level = IOperation.Level.GENIUS;
+                        break;
+                    default:    
+                        _level = IOperation.Level.values()[(int) (_randomNumberGenerator.nextDouble() * 3)];
+                        break;
+                }
+
+                // Encoding Data source: http://www.fileformat.info/info/unicode/char/search.htm
+                switch (_operation) {
+                    case ADD:
+                        _operatorSymbol = "\u002B";
+                        break;
+                    case SUBTRACT:
+                        _operatorSymbol = "\u2212";
+                        break;
+                    case MULTIPLY:
+                        _operatorSymbol = "\u00D7";
+                        break;
+                    case DIVIDE:
+                        _operatorSymbol = "\u00F7";
+                }
+
+                _factory = new OperatorFactory();                           //invoke the factory class
+                myOperation = _factory.CreateOperator(_operation);         //Create Object from the factory class
+                myOperation.range(_level, _operation);                     //Set the range boundaries based on the level of difficlulty and the Math operation
+                myOperation.generateValuePair();                           //Set the First and Second values to be presented to the user as a Math Problem in the Game
+                
+
+                _mathGameVariables = myOperation.getConcurrentHashMap();
+                String s = String.format("What is %.0f %s %.0f%n", _mathGameVariables.get(IOperation.DefineValue.FIRSTVALUE), _operatorSymbol, _mathGameVariables.get(IOperation.DefineValue.SECONDVALUE));
+                this.jLbQuestion.setText(s);
+                
+                this.jLblAnswerTag.setVisible(true);
+                this.jTfAnswer.setVisible(true);
+                this.jBtnSubmit.setVisible(true);
+                this.jBtnStartNext.setText("Next");
+                this.jBtnStartNext.setEnabled(false);
+                this.jLblResponse.setText("");
+            }
+        }
+        catch(HeadlessException ex){
+            JOptionPane.showMessageDialog(rootPane, String.format("The environment that does not support a keyboard, display, or mouse.%nError: %s", ex), "Input Error", WIDTH);
+        }
+        
+    }//GEN-LAST:event_jBtnStartNextActionPerformed
+
+    private void jBtnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSubmitActionPerformed
+        Double _correctAnswer;
+        Double _answer = null;
+        boolean _isCorrect;
+        String _response;
+        if(this.jTfAnswer.getText().isEmpty() ){
+            this.jTfAnswer.setText("Enter your answer here");
+        }else if(this.jTfAnswer.getText().equals("Enter your answer here")){
+            JOptionPane.showMessageDialog(rootPane, "Enter a number","Error: No value entered",WIDTH);
+        }
+        else{
+            try{
+                _answer = Double.parseDouble(this.jTfAnswer.getText());
+                
+                myOperation.result();                                      //Calculate the expected results.
+                
+                _isCorrect = myOperation.isCorrect(_answer);
+                _response = myOperation.response(_isCorrect);
+                this.jLblResponse.setText(_response);
+                
+                if (_isCorrect) {
+                    this.jBtnStartNext.setEnabled(true);
+                    this.jLblAnswerTag.setVisible(false);
+                    this.jTfAnswer.setVisible(false);
+                    this.jBtnSubmit.setVisible(false);
+                }
+                else{
+                    numWrongAns++;
+                    if (numWrongAns > 2) {
+                        numWrongAns = 0;
+                        _correctAnswer = (Double)myOperation.getConcurrentHashMap().get(IOperation.DefineValue.ANSWER);
+                        this.jBtnStartNext.setEnabled(true);
+                        this.jLblAnswerTag.setVisible(false);
+                        this.jTfAnswer.setVisible(false);
+                        this.jBtnSubmit.setVisible(false);
+                        
+                        this.jLblResponse.setText(String.format("Not quite! The correct answer is %d", _correctAnswer.intValue()));
+                    }
+                }    
+            }
+            catch(NumberFormatException ex){
+                 JOptionPane.showMessageDialog(rootPane, String.format("%s is not a number%nPlease enter a valid numnber%nError: %s", this.jTfAnswer.getText(),ex), "Error: Invalid Number", WIDTH);
+             }
+            catch(UnsupportedOperationException ex){
+                System.out.println(ex);
+            }
+        }  
+    }//GEN-LAST:event_jBtnSubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,12 +507,46 @@ public class MathGameGUI extends javax.swing.JFrame {
         this.setVisible(true);            // Vital allow visibility of the JFrame NB: JFrame.show() is deprecated  
     }
     
+    private JRadioButton jRadioButtonSelected(ButtonGroup buttonGroup){
+        Enumeration<AbstractButton> _jRadioButtons = buttonGroup.getElements();
+                while(_jRadioButtons.hasMoreElements()){
+                    JRadioButton _jRbtn = (JRadioButton)_jRadioButtons.nextElement();
+                    if(_jRbtn.isSelected())
+                    {
+                        return _jRbtn;
+                    }
+                }
+        return null;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup GrpLevel;
+    private javax.swing.ButtonGroup GrpOperation;
+    private javax.swing.JButton jBtnStartNext;
+    private javax.swing.JButton jBtnSubmit;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLbQuestion;
+    private javax.swing.JLabel jLblAnswerTag;
+    private javax.swing.JLabel jLblLevel;
+    private javax.swing.JLabel jLblMathOpearation;
+    private javax.swing.JLabel jLblQuestion;
+    private javax.swing.JLabel jLblResponse;
     private javax.swing.JMenuBar jMB_Main;
     private javax.swing.JMenuItem jMI_Close;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jP_Main;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRbAdd;
+    private javax.swing.JRadioButton jRbDivide;
+    private javax.swing.JRadioButton jRbEasy;
+    private javax.swing.JRadioButton jRbGenius;
+    private javax.swing.JRadioButton jRbHard;
+    private javax.swing.JRadioButton jRbModerate;
+    private javax.swing.JRadioButton jRbMultiply;
+    private javax.swing.JRadioButton jRbRandom;
+    private javax.swing.JRadioButton jRbSubtract;
+    private javax.swing.JTextField jTfAnswer;
     // End of variables declaration//GEN-END:variables
 }
