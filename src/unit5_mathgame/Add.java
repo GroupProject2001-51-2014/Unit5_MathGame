@@ -19,9 +19,15 @@ import java.util.concurrent.ConcurrentHashMap;
  * 
  */
 public class Add<T extends Double, U extends String> extends Operator<T, U> {
+    /**
+     * Object used for threading access control.
+     */
     private static final Object LOCK = new Object();    // Constant to be used to sync
       
-    public Add() {} // default constractor
+    /**
+     * Default constructor
+     */
+    public Add() {} // ctor
     
     /**
      * Constructor that takes the {@code ConcurrentHashMap<DefineValue, T> valuePairInput}
