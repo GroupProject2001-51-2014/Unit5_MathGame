@@ -1,20 +1,35 @@
 
 package unit5_mathgame;
 
-//import java.util.concurrent.ConcurrentHashMap;
-
-/**
- * 
- * <p/>
+/*
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
- * Brian Bagwell       02/19/2014      Modified the switch value to take the enum    
- * 
+ * Brian Bagwell       02/19/2014      Modified the switch value to take the enum
+*/
+
+/**   
+ * A Factory for generating the appropriate {@link Operator} concrete class object
+ * using decomposition.
  * @author John Mambo <john.mambo@gmail.com>
+ * @see Operator
+ * @see Add
+ * @see Subtract
+ * @see Multiply
+ * @see Divide
  */
 public final class OperatorFactory {
-    
+    /**
+     * Creates the Appropriate object based on the {@link IOperation.Operation}
+     * @param operation
+     * @return Object of type {@link IOperation}
+     * @see IOperation 
+     * @see IOperation.Operation
+     * @see Add
+     * @see Subtract
+     * @see Multiply
+     * @see Divide
+     */
     public IOperation CreateOperator(IOperation.Operation operation){
         
         switch(operation){
