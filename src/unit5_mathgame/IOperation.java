@@ -13,6 +13,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author John Mambo <john.mambo@gmail.com>
  * @param <T> Template type parameter with {@code Double} upper bound  
  * @param <U> Template type parameter with {@code String} upper bound
+ * @see OperatorFactory
+ * @see Operator
+ * @see ConcurrentHashMap
  */
 public interface IOperation<T extends Double, U extends String> {
     
