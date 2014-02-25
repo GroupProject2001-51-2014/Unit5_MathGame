@@ -3,16 +3,17 @@ package unit5_mathgame;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-/** 
- * Provided a means to calculate the results of two randomly generated numbers
- * with a method to check the answer as well as provide the appropriate response.
- * <p/>
+/*
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
  * John Mambo          02/23/2014      Removed all other method implementation except public void {@code result()}<br/>
  *                                     They are abstracted to the abstract Operator class.
- * 
+ */
+
+/** 
+ * Provided a means to calculate the results of adding two randomly generated numbers
+ * with a method to check the answer as well as provide the appropriate response.
  * @author John Mambo <john.mambo@gmail.com>
  * @param <T> Template type parameter with {@code Double} upper bound 
  * @param <U> Template type parameter with {@code String} upper bound 

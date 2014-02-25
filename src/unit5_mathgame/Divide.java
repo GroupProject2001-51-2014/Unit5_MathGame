@@ -4,7 +4,6 @@ package unit5_mathgame;
 import java.util.Random;
 
 /*
- * 
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
@@ -13,7 +12,10 @@ import java.util.Random;
  * 
  * Brian Bagwell       02/24/2014      Modified the @overide for the generation of values such that the second value will be greater than 0 
  *                                     completed the results method for the divide class
- * 
+ */
+
+/**
+ *
  * @author Brian Bagwell
  * @param <T> Template type parameter with {@code Double} upper bound 
  * @param <U> Template type parameter with {@code String} upper bound 

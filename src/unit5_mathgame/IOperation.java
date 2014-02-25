@@ -3,13 +3,15 @@ package unit5_mathgame;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Interface defines the contract for the Math Game
- * <p/>
+/*
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
  *
+ */
+
+/**
+ * Interface defines the contract for the Math Game
  * @author John Mambo <john.mambo@gmail.com>
  * @param <T> Template type parameter with {@code Double} upper bound  
  * @param <U> Template type parameter with {@code String} upper bound

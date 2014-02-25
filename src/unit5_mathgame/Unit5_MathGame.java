@@ -2,6 +2,12 @@
 package unit5_mathgame;
 
 import java.util.concurrent.ConcurrentHashMap;
+/*
+ * Revision History:<br/>
+ * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
+ * ------------------  -------------   ---------<br/>
+ *
+ */
 
 //<editor-fold defaultstate="collapsed" desc="Group 1 Math Game Assignment">
 /**
@@ -9,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * III Graded Group Programming Exercise Math Game 6.35+6.36+6.39 with enhancements
  * Read the assignment description on pages 238-239.
  * Before starting working on the assignment, see Math Games (6.31&6.35b) HOF examples at
- * {@link http://www.tvolk.net/vc/2001HOF/index.html}
+ * {@linkplain  http://www.tvolk.net/vc/2001HOF/index.html}
  * Working as a team, create a project Math Game covering requirements in 6.35+6.36+6.39 and enhancements below.
  * Project enhancements:<br/>
  * 1. Modify the program to allow the user to pick the type of arithmetic problems he or she wishes to study. Option ‘a’ and ‘A’ mean (code should allow a user to enter capital or small letter) addition problems only, ‘d’ and ‘D’ means division problems only and ‘r’ and ‘R’ mean a random mixture of problems of all these types.<br/>
@@ -61,11 +67,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * issue the responses.
  * --------------------------------- END TEXT BOOK ----------------------------------------------------- 
  * 
- * <p/>
- * Revision History:<br/>
- * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
- * ------------------  -------------   ---------<br/>
- *
  * 
  * @author John Mambo <john.mambo@gmail.com>
  * 

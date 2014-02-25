@@ -1,8 +1,6 @@
 package unit5_mathgame;
 
-/**
- * 
- * <p/>
+/*
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
@@ -10,6 +8,10 @@ package unit5_mathgame;
  *                                     They are abstracted to the abstract Operator class.
  * 
  * Brian Bagwell       02/24/2014       Modified the results method to coincide with the operation of template interface.
+ * 
+ */
+
+/**
  * 
  * @author Brian Bagwell
  * @param <T> Template type parameter with {@code Double} upper bound 

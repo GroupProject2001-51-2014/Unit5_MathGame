@@ -37,7 +37,7 @@ public abstract class Operator<T extends Double, U extends String> implements IO
      *                                  or if {@code DefineValue.UPPERLIMIT} is {@code null}<br/>
      *                                  or if {@code DefineValue.LOWERLIMIT} is {@code null}<br/>
      *                                  or if {@code DefineValue.LOWERLIMIT} is greater than the {@code DefineValue.UPPERLIMIT} is {@code null}<br/>
-     * @see generateValuePair()
+     * @see generateValuePair
      * @see IOperation.DefineValue
      * @see ConcurrentHashMap
      */
@@ -74,9 +74,9 @@ public abstract class Operator<T extends Double, U extends String> implements IO
      * @param valuePairInput
      * @param level
      * @param operation
-     * @return 
+     * @return ConcurrentHashMap Which contains the Math Game variables.
      * 
-     * @see range
+     * @see range(Level level, Operation operation)
      * @see IOperation.Level
      * @see ConcurrentHashMap
      */

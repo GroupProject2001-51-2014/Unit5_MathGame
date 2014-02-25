@@ -1,17 +1,20 @@
 
 package unit5_mathgame;
 
-/**
- *  
- * <p/> 
+/*
  * Revision History:<br/>
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
  * John Mambo           02/23/2014      Took over the implementation of the class Subtract from Alhassan Ahmed
+ *
+ */
 
+/**
+ * Provided a means to calculate the results of subtracting two randomly generated numbers
+ * with a method to check the answer as well as provide the appropriate response.
  * @author John Mambo
- * @param <T>
- * @param <U> 
+ * @param <T> Template type parameter with {@code Double} upper bound 
+ * @param <U> Template type parameter with {@code String} upper bound 
  * 
  */
 public class Subtract<T extends Double, U extends String> extends Operator<T, U> {
