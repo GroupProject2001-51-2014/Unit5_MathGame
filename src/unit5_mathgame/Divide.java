@@ -25,7 +25,7 @@ public class Divide<T extends Double, U extends String> extends Operator<T, U>{
     
     @Override
     public void generateValuePair() throws UnsupportedOperationException{
-       
+
          Random randomNumberGenerator = new Random();
 
             double range = valuePair.get(DefineValue.UPPERLIMIT) - valuePair.get(DefineValue.LOWERLIMIT);
@@ -40,7 +40,6 @@ public class Divide<T extends Double, U extends String> extends Operator<T, U>{
     }//end generateValuePair()
     
     @Override
-
     public final void result()  throws UnsupportedOperationException{
         
         Double _result;
@@ -67,7 +66,8 @@ public class Divide<T extends Double, U extends String> extends Operator<T, U>{
         _result = this.valuePair.get(DefineValue.FIRSTVALUE) / this.valuePair.get(DefineValue.SECONDVALUE);
 
         this.valuePair.put(DefineValue.ANSWER, (T)_result);
-   
+
+
     }//end result() 
             
 }
