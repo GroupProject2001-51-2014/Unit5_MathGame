@@ -1,6 +1,7 @@
 
 package unit5_mathgame;
 
+import java.awt.BorderLayout;
 import java.awt.HeadlessException;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 /**
@@ -20,24 +22,24 @@ import javax.swing.JRadioButton;
  * Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change:<br/>
  * ------------------  -------------   ---------<br/>
  *
- * @author Alhassan Ahmed
+ * @author John Mambo
  *
  */
 public class MathGameGUI extends javax.swing.JFrame {
     Map<String, JRadioButton> selectedRadioButton = new HashMap<String, JRadioButton>();
     IOperation myOperation;
     int numWrongAns = 0;
-    
+       
     /**
      * Creates new form MathGameGUI
      */
     public MathGameGUI() {
-        this.initComponents();
-        this.init();
+        this.initComponents();      
+        this.init();           
         this.jLblAnswerTag.setVisible(false);
         this.jTfAnswer.setVisible(false);
         this.jBtnSubmit.setVisible(false);
-        
+
     }
 
     /**
@@ -81,39 +83,76 @@ public class MathGameGUI extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(189, 179, 192));
 
-        jLblMathOpearation.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLblMathOpearation.setText("Mathematical Operation");
+        jP_Main.setBackground(new java.awt.Color(255, 255, 255));
+        jP_Main.setOpaque(false);
+        jP_Main.setPreferredSize(new java.awt.Dimension(641, 373));
 
-        jLblLevel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLblMathOpearation.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLblMathOpearation.setForeground(new java.awt.Color(255, 204, 0));
+        jLblMathOpearation.setText("Math Operation");
+
+        jLblLevel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLblLevel.setForeground(new java.awt.Color(255, 255, 0));
         jLblLevel.setText("Level of Ease");
+        jLblLevel.setMaximumSize(new java.awt.Dimension(89, 17));
+        jLblLevel.setMinimumSize(new java.awt.Dimension(89, 17));
+        jLblLevel.setPreferredSize(new java.awt.Dimension(89, 17));
 
         GrpOperation.add(jRbAdd);
+        jRbAdd.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRbAdd.setForeground(new java.awt.Color(255, 204, 0));
         jRbAdd.setText("Addition");
+        jRbAdd.setOpaque(false);
 
         GrpOperation.add(jRbSubtract);
+        jRbSubtract.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRbSubtract.setForeground(new java.awt.Color(255, 204, 0));
         jRbSubtract.setText("Subtraction");
+        jRbSubtract.setOpaque(false);
 
         GrpOperation.add(jRbMultiply);
+        jRbMultiply.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRbMultiply.setForeground(new java.awt.Color(255, 204, 0));
         jRbMultiply.setText("Multiplication");
+        jRbMultiply.setOpaque(false);
 
         GrpOperation.add(jRbDivide);
+        jRbDivide.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRbDivide.setForeground(new java.awt.Color(255, 204, 0));
         jRbDivide.setText("Division");
+        jRbDivide.setOpaque(false);
 
         GrpOperation.add(jRbRandom);
+        jRbRandom.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRbRandom.setForeground(new java.awt.Color(255, 204, 0));
         jRbRandom.setText("Random Choice");
+        jRbRandom.setOpaque(false);
 
         GrpLevel.add(jRbEasy);
+        jRbEasy.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRbEasy.setForeground(new java.awt.Color(255, 255, 0));
         jRbEasy.setText("Easy");
+        jRbEasy.setOpaque(false);
 
         GrpLevel.add(jRbModerate);
+        jRbModerate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRbModerate.setForeground(new java.awt.Color(255, 255, 0));
         jRbModerate.setText("Moderate");
+        jRbModerate.setOpaque(false);
 
         GrpLevel.add(jRbHard);
+        jRbHard.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRbHard.setForeground(new java.awt.Color(255, 255, 0));
         jRbHard.setText("Hard");
+        jRbHard.setOpaque(false);
 
         GrpLevel.add(jRbGenius);
+        jRbGenius.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRbGenius.setForeground(new java.awt.Color(255, 255, 0));
         jRbGenius.setText("Genius");
+        jRbGenius.setOpaque(false);
 
         jBtnStartNext.setText("Start");
         jBtnStartNext.addActionListener(new java.awt.event.ActionListener() {
@@ -128,21 +167,25 @@ public class MathGameGUI extends javax.swing.JFrame {
                 jTfAnswerFocusGained(evt);
             }
         });
-        jTfAnswer.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTfAnswerKeyReleased(evt);
-            }
-        });
 
-        jLblAnswerTag.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLblAnswerTag.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLblAnswerTag.setForeground(new java.awt.Color(204, 204, 0));
         jLblAnswerTag.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLblAnswerTag.setText("Answer:");
 
+        jPanel1.setOpaque(false);
+
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setText("Please choose the options on the right and click \"Start\"  button:");
+        jLabel1.setPreferredSize(new java.awt.Dimension(0, 0));
 
+        jLblQuestion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLblQuestion.setForeground(new java.awt.Color(127, 74, 180));
         jLblQuestion.setText("Question:");
 
+        jLbQuestion.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLbQuestion.setForeground(new java.awt.Color(127, 74, 180));
         jLbQuestion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -165,6 +208,10 @@ public class MathGameGUI extends javax.swing.JFrame {
                 .addComponent(jLbQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
         );
 
+        jLblResponse.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        jLblResponse.setForeground(new java.awt.Color(190, 252, 1));
+        jLblResponse.setPreferredSize(new java.awt.Dimension(304, 14));
+
         jBtnSubmit.setText("Submit");
         jBtnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +223,7 @@ public class MathGameGUI extends javax.swing.JFrame {
         jP_Main.setLayout(jP_MainLayout);
         jP_MainLayout.setHorizontalGroup(
             jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_MainLayout.createSequentialGroup()
+            .addGroup(jP_MainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLblResponse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -185,27 +232,33 @@ public class MathGameGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTfAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnSubmit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jBtnSubmit))
                     .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBtnStartNext)
-                    .addComponent(jRbRandom)
-                    .addGroup(jP_MainLayout.createSequentialGroup()
-                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLblMathOpearation)
-                            .addComponent(jRbAdd)
-                            .addComponent(jRbSubtract)
-                            .addComponent(jRbMultiply)
-                            .addComponent(jRbDivide))
-                        .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_MainLayout.createSequentialGroup()
+                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jRbAdd, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRbSubtract, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRbMultiply, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRbDivide, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRbGenius)
                             .addComponent(jRbHard)
-                            .addComponent(jRbModerate)
                             .addComponent(jRbEasy)
-                            .addComponent(jLblLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jRbModerate, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(41, Short.MAX_VALUE))
+                    .addGroup(jP_MainLayout.createSequentialGroup()
+                        .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBtnStartNext)
+                            .addGroup(jP_MainLayout.createSequentialGroup()
+                                .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLblMathOpearation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jRbRandom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLblLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jP_MainLayout.setVerticalGroup(
             jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +268,7 @@ public class MathGameGUI extends javax.swing.JFrame {
                     .addGroup(jP_MainLayout.createSequentialGroup()
                         .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLblMathOpearation, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLblLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLblLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRbAdd)
@@ -235,14 +288,14 @@ public class MathGameGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRbRandom))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBtnStartNext)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLblAnswerTag)
                         .addComponent(jTfAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnSubmit)))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLblResponse, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -267,11 +320,14 @@ public class MathGameGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jP_Main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jP_Main, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jP_Main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jP_Main, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
         );
 
         pack();
@@ -286,32 +342,27 @@ public class MathGameGUI extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMI_CloseActionPerformed
 
-    private void jTfAnswerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTfAnswerKeyReleased
-        //<editor-fold defaultstate="collapsed" desc="REMOVE">
-        /* if( this.jTfAnswer.getText().length() > 0){
-        this.jBtnStartNext.setText("Submit");
-        }
-        else{
-        this.jBtnStartNext.setText("Start");
-        }*/
-//</editor-fold>
-    }//GEN-LAST:event_jTfAnswerKeyReleased
-
+    /**
+     * Resets the value of the Answer label used for user input to Empty string
+     * @param evt Event fired by the Answer Label
+     */
     private void jTfAnswerFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTfAnswerFocusGained
         this.jTfAnswer.setText("");
     }//GEN-LAST:event_jTfAnswerFocusGained
 
+    /**
+     * Runs the logic to present the Questions to the User
+     * @param evt Event fired by the Clicking the Start/Next button
+     */
     private void jBtnStartNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnStartNextActionPerformed
+        // Local variables
         Random _randomNumberGenerator = new Random(); 
         ConcurrentHashMap _mathGameVariables;    
-        
         JRadioButton _jRbOperation;
         JRadioButton _jRbLevel;
-
         IOperation.Operation _operation;    //indicate the desired Math operation.
         IOperation.Level _level;            //indicate the level of ease        
-        OperatorFactory _factory;
-        
+        OperatorFactory _factory;  
         String _operatorSymbol = null;
         
         try{
@@ -342,7 +393,7 @@ public class MathGameGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, _message.toString(), _title.toString(), WIDTH);
             }else{
                 /**
-                 * Logic
+                 * Logic for presenting the Questions
                  */
                 switch(_jRbOperation.getText()){
                     case "Addition": 
@@ -418,9 +469,14 @@ public class MathGameGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jBtnStartNextActionPerformed
 
+    /**
+     * Handles the logic of checking the for the correct answer from the user
+     * input and presenting a response
+     * @param evt Event triggered by clicking the Submit button
+     */
     private void jBtnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSubmitActionPerformed
         Double _correctAnswer;
-        Double _answer = null;
+        Double _answer;
         boolean _isCorrect;
         String _response;
         if(this.jTfAnswer.getText().isEmpty() ){
@@ -502,13 +558,22 @@ public class MathGameGUI extends javax.swing.JFrame {
      * Initialize some properties of the JFrame Component and make it visible
      */
     private void init() {
+        JPanel panel = new BackGround(this);
+        panel.add(this.jP_Main, BorderLayout.CENTER);
+        
+        this.setContentPane(panel);
         this.setTitle("Math Game");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);           // Size the JFrame to a known size configuration
         this.setLocationRelativeTo(null); // Brings the window to the Center of the screen
-        this.setVisible(true);            // Vital allow visibility of the JFrame NB: JFrame.show() is deprecated  
+        this.setVisible(true);            // Vital allow visibility of the JFrame NB: JFrame.show() is deprecated 
     }
     
+    /**
+     * Checks for the selected radio button from a button group
+     * @param buttonGroup Button group
+     * @return the Selected Radio Button
+     */
     private JRadioButton jRadioButtonSelected(ButtonGroup buttonGroup){
         Enumeration<AbstractButton> _jRadioButtons = buttonGroup.getElements();
                 while(_jRadioButtons.hasMoreElements()){
