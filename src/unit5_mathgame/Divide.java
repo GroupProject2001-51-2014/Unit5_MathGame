@@ -67,11 +67,7 @@ public class Divide<T extends Double, U extends String> extends Operator<T, U>{
         _result = this.valuePair.get(DefineValue.FIRSTVALUE) / this.valuePair.get(DefineValue.SECONDVALUE);
 
         this.valuePair.put(DefineValue.ANSWER, (T)_result);
-
-    public void result()  throws UnsupportedOperationException{
-        throw new UnsupportedOperationException("Not supported yet.");
-        // TODO Brian Bagwell: completed the logic here and delete line 31 above^
-
+   
     }//end result() 
             
 }
