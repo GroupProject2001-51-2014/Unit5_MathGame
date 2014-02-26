@@ -35,9 +35,6 @@ public class Divide<T extends Double, U extends String> extends Operator<T, U>{
                         
             valuePair.put(DefineValue.FIRSTVALUE, (T)firstNumber);
             valuePair.put(DefineValue.SECONDVALUE, (T)secondNumber);
-        
-      throw new UnsupportedOperationException("Not supported yet.");
-
     }//end generateValuePair()
     
     @Override
@@ -67,8 +64,6 @@ public class Divide<T extends Double, U extends String> extends Operator<T, U>{
         _result = this.valuePair.get(DefineValue.FIRSTVALUE) / this.valuePair.get(DefineValue.SECONDVALUE);
 
         this.valuePair.put(DefineValue.ANSWER, (T)_result);
-
-
     }//end result() 
             
 }
