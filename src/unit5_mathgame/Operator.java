@@ -1,8 +1,14 @@
 
 package unit5_mathgame;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
  /* 
  *Revision History:<br/>
@@ -228,9 +234,29 @@ public abstract class Operator<T extends Double, U extends String> implements IO
         return (U)_response;     
     }//end response
     
-    @Override
-    public void playResponse(boolean isCorrect) throws UnsupportedOperationException{
-        throw new UnsupportedOperationException("Not supported yet.");
-        // TODO Brian Bagwell: Use this method to provide sound feedback and remove line 178 above^
-    }
-}
+    /**
+     * Plays a sound corresponding to the answer provided.<br/>
+     * The aim is to keep the user engaged.
+     * @param isCorrect {@code boolean} Which indicates if the user's answer to the question is correct.
+     * @throws UnsupportedOperationException When the method is not implemented
+     * @see Clip
+     * @see AudioSystem
+     */
+     @Override
+    public synchronized void playResponse(boolean isCorrect) throws UnsupportedOperationException{
+        try {
+            Clip clip = AudioSystem.getClip();
+            AudioInputStream inputStream;
+                if (isCorrect) {
+                   inputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/Sound/fanfare.wav")); 
+                }else{
+                    inputStream = AudioSystem.getAudioInputStream(this.getClass().getResource("/Sound/matchover.wav"));
+                }
+
+            clip.open(inputStream);
+            clip.start(); 
+        } catch (IOException | LineUnavailableException | UnsupportedAudioFileException ex) {
+          System.out.println(ex);
+        }
+    }//end playResponse
+}//end class Operator
