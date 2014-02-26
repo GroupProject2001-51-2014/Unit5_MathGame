@@ -53,7 +53,6 @@ public class MathGameGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         GrpLevel = new javax.swing.ButtonGroup();
         GrpOperation = new javax.swing.ButtonGroup();
         jP_Main = new javax.swing.JPanel();
@@ -71,18 +70,15 @@ public class MathGameGUI extends javax.swing.JFrame {
         jBtnStartNext = new javax.swing.JButton();
         jTfAnswer = new javax.swing.JTextField();
         jLblAnswerTag = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanelQuestion = new javax.swing.JPanel();
+        jLblInstructions = new javax.swing.JLabel();
         jLblQuestion = new javax.swing.JLabel();
         jLbQuestion = new javax.swing.JLabel();
         jLblResponse = new javax.swing.JLabel();
         jBtnSubmit = new javax.swing.JButton();
         jMB_Main = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenu_File = new javax.swing.JMenu();
         jMI_Close = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-
-        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(189, 179, 192));
@@ -98,9 +94,6 @@ public class MathGameGUI extends javax.swing.JFrame {
         jLblLevel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLblLevel.setForeground(new java.awt.Color(255, 255, 0));
         jLblLevel.setText("Level of Ease");
-        jLblLevel.setMaximumSize(new java.awt.Dimension(89, 17));
-        jLblLevel.setMinimumSize(new java.awt.Dimension(89, 17));
-        jLblLevel.setPreferredSize(new java.awt.Dimension(89, 17));
 
         GrpOperation.add(jRbAdd);
         jRbAdd.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -175,12 +168,12 @@ public class MathGameGUI extends javax.swing.JFrame {
         jLblAnswerTag.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLblAnswerTag.setText("Answer:");
 
-        jPanel1.setOpaque(false);
+        jPanelQuestion.setOpaque(false);
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setText("Please choose the options on the right and click \"Start\"  button:");
-        jLabel1.setPreferredSize(new java.awt.Dimension(0, 0));
+        jLblInstructions.setForeground(new java.awt.Color(255, 255, 255));
+        jLblInstructions.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLblInstructions.setText("Please choose the options on the right and click \"Start\"  button:");
+        jLblInstructions.setPreferredSize(new java.awt.Dimension(0, 0));
 
         jLblQuestion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLblQuestion.setForeground(new java.awt.Color(127, 74, 180));
@@ -190,20 +183,20 @@ public class MathGameGUI extends javax.swing.JFrame {
         jLbQuestion.setForeground(new java.awt.Color(127, 74, 180));
         jLbQuestion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelQuestionLayout = new javax.swing.GroupLayout(jPanelQuestion);
+        jPanelQuestion.setLayout(jPanelQuestionLayout);
+        jPanelQuestionLayout.setHorizontalGroup(
+            jPanelQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelQuestionLayout.createSequentialGroup()
                 .addComponent(jLblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jLbQuestion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLblInstructions, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanelQuestionLayout.setVerticalGroup(
+            jPanelQuestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelQuestionLayout.createSequentialGroup()
+                .addComponent(jLblInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLblQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -235,7 +228,7 @@ public class MathGameGUI extends javax.swing.JFrame {
                         .addComponent(jTfAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnSubmit))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelQuestion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jP_MainLayout.createSequentialGroup()
@@ -259,7 +252,7 @@ public class MathGameGUI extends javax.swing.JFrame {
                                     .addComponent(jLblMathOpearation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jRbRandom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jLblLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLblLevel)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jP_MainLayout.setVerticalGroup(
@@ -270,7 +263,7 @@ public class MathGameGUI extends javax.swing.JFrame {
                     .addGroup(jP_MainLayout.createSequentialGroup()
                         .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLblMathOpearation, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLblLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLblLevel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jRbAdd)
@@ -289,7 +282,7 @@ public class MathGameGUI extends javax.swing.JFrame {
                             .addComponent(jRbGenius))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRbRandom))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jP_MainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBtnStartNext)
@@ -302,7 +295,7 @@ public class MathGameGUI extends javax.swing.JFrame {
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("File");
+        jMenu_File.setText("File");
 
         jMI_Close.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         jMI_Close.setText("Close");
@@ -311,10 +304,9 @@ public class MathGameGUI extends javax.swing.JFrame {
                 jMI_CloseActionPerformed(evt);
             }
         });
-        jMenu1.add(jMI_Close);
+        jMenu_File.add(jMI_Close);
 
-        jMB_Main.add(jMenu1);
-        jMB_Main.add(jMenu2);
+        jMB_Main.add(jMenu_File);
 
         setJMenuBar(jMB_Main);
 
@@ -593,20 +585,18 @@ public class MathGameGUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup GrpOperation;
     private javax.swing.JButton jBtnStartNext;
     private javax.swing.JButton jBtnSubmit;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLbQuestion;
     private javax.swing.JLabel jLblAnswerTag;
+    private javax.swing.JLabel jLblInstructions;
     private javax.swing.JLabel jLblLevel;
     private javax.swing.JLabel jLblMathOpearation;
     private javax.swing.JLabel jLblQuestion;
     private javax.swing.JLabel jLblResponse;
     private javax.swing.JMenuBar jMB_Main;
     private javax.swing.JMenuItem jMI_Close;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu jMenu_File;
     private javax.swing.JPanel jP_Main;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelQuestion;
     private javax.swing.JRadioButton jRbAdd;
     private javax.swing.JRadioButton jRbDivide;
     private javax.swing.JRadioButton jRbEasy;
