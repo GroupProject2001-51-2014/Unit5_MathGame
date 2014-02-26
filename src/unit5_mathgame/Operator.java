@@ -27,6 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class Operator<T extends Double, U extends String> implements IOperation<T,U> {
     private static final Object LOCK = new Object();
+    private U lastResponse;
     public final ConcurrentHashMap<DefineValue, T> valuePair = new ConcurrentHashMap<>(1,1f,1);
     
     /**
@@ -184,28 +185,47 @@ public abstract class Operator<T extends Double, U extends String> implements IO
      */
     @Override
     public synchronized U response(boolean isCorrect){
+        U _response;
         Random _randNumGen = new Random();
         int _num = _randNumGen.nextInt(5);
         if (isCorrect) {
            switch(_num){
-                case 0: return (U)"Very good!";
-                case 1: return (U)"Excellent!";
-                case 2: return (U)"Nice work!";
-                case 3: return (U)"Keep up the good work!";
-                case 4: return (U)"Hoorah!";
+                case 0: _response = (U)"Very good!";
+                    break;
+                case 1: _response = (U)"Excellent!";
+                    break;
+                case 2: _response = (U)"Nice work!";
+                    break;
+                case 3: _response = (U)"Keep up the good work!";
+                    break;
+                case 4: _response = (U)"Hoorah!";
+                    break;
                 default: return null; 
             } 
-        }
-        else{
+        }else{
             switch(_num){
-                case 0: return (U)"No. Please try again!";
-                case 1: return (U)"Wrong. Try once more!";
-                case 2: return (U)"Don't give up!";
-                case 3: return (U)"No. Keep trying!";
-                case 4: return (U)"Dig in a little deeper. It will pay-off!";
+                case 0: _response = (U)"No. Please try again!";
+                    break;
+                case 1: _response = (U)"Wrong. Try once more!";
+                    break;
+                case 2: _response = (U)"Don't give up!";
+                    break;
+                case 3: _response = (U)"No. Keep trying!";
+                    break;
+                case 4: _response = (U)"Dig in a little deeper. It will pay-off!";
+                    break;
                 default: return null; 
             }                
-        } 
+        }
+        /**
+         * Eliminate repeating the same response consecutively.
+         */
+        if(this.lastResponse != null && this.lastResponse.equalsIgnoreCase(_response) ){
+            this.response(isCorrect);
+        }
+        
+        this.lastResponse = (U)_response;
+        return (U)_response;     
     }//end response
     
     @Override
